@@ -27,7 +27,7 @@ Before you begin, make sure you have the following installed:
 You can install the dependencies using the following command:
 
  
-pip install fastapi uvicorn grpcio grpcio-tools kafka-python
+`pip install fastapi uvicorn grpcio grpcio-tools kafka-python`
 
 
 ### Kafka Setup
@@ -39,7 +39,7 @@ You should also have Zookeeper running if you're using a separate Zookeeper inst
 A .proto file is used to define the message types and the service interface. The protobuf file services.proto is defined as follows:
 
  
-syntax = "proto3";
+`syntax = "proto3";
 
 package communication;
 
@@ -53,7 +53,7 @@ message Response {
 
 service CommunicationService {
   rpc sendMessage(Request) returns (Response);
-}
+}`
 
 
 
@@ -61,7 +61,7 @@ service CommunicationService {
 You can generate the necessary Python files (services_pb2.py and services_pb2_grpc.py) by running:
 
  
-python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. services.proto
+`python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. services.proto`
 
 
 
