@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package communication;
+
+// The message format
+message Request {
+  string message = 1;
+}
+
+message Response {
+  string message = 1;
+}
+
+// The service definition
+service CommunicationService {
+  rpc sendMessage(Request) returns (Response);
+}
