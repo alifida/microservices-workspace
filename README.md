@@ -108,7 +108,7 @@ Start the service by running:
 **Service 1**: Sends a message to Kafka through an HTTP POST request. For example:
 
 `curl -X 'POST' \
-  'http://localhost:8000/send/' \
+  'http://localhost:8001/send/' \
   -H 'Content-Type: application/json' \
   -d '{
   "message": "Hello from Service 1"
