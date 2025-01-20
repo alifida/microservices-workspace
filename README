@@ -83,7 +83,7 @@ This service implements the gRPC server. It listens for incoming gRPC requests f
 This service sends messages to the Kafka topic my_topic.
 Start the service by running:
 
-*uvicorn service1:app --reload --host 0.0.0.0 --port 8000*
+`uvicorn service1:app --reload --host 0.0.0.0 --port 8001`
 
 
 **Run Service 2 (Kafka Consumer and gRPC Client):**
@@ -92,7 +92,7 @@ This service listens for messages on the Kafka topic my_topic, then forwards tho
 Start the service by running:
 
 
-*uvicorn service2:app --reload --host 0.0.0.0 --port 8001*
+`uvicorn service2:app --reload --host 0.0.0.0 --port 8002`
 
 
 **Run Service 3 (gRPC Server):**
@@ -101,18 +101,18 @@ This service handles incoming gRPC requests from Service 2.
 Start the service by running:
 
 
-*uvicorn service3:app --reload --host 0.0.0.0 --port 8002*
+`uvicorn service3:app --reload --host 0.0.0.0 --port 8003`
 
 ### Interaction Flow
 
 **Service 1**: Sends a message to Kafka through an HTTP POST request. For example:
 
-* curl -X 'POST' \
+`curl -X 'POST' \
   'http://localhost:8000/send/' \
   -H 'Content-Type: application/json' \
   -d '{
   "message": "Hello from Service 1"
-}' *
+}'`
 
 **Service 2**: Consumes the message from Kafka and forwards it to **Service 3** using gRPC.
 
@@ -133,7 +133,3 @@ The gRPC server in Service 3 runs on a separate thread alongside FastAPI by usin
 Ensure Kafka is running on localhost:9092 and that there are no issues with the Kafka topic my_topic.
 Verify that all services are running on the correct ports and are able to communicate with each other (e.g., Service 2 should be able to reach Service 3 on port 50051 for gRPC).
 If you encounter issues with gRPC, ensure that the .proto file is correctly compiled and that the generated files are being used.
-
-
-
-
