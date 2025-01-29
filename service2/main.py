@@ -16,7 +16,8 @@ consumer = KafkaConsumer(
     'my_topic',
     bootstrap_servers='localhost:9092',
     #group_id='my-group',
-    value_deserializer=lambda m: json.loads(m.decode('utf-8'))
+    #value_deserializer=lambda m: json.loads(m.decode('utf-8'))
+    #value_deserializer=lambda m: services_pb2.Request.FromString(m)
 )
 
 def grpc_send_message(message):
@@ -29,7 +30,7 @@ def grpc_send_message(message):
 def consume_kafka_messages():
     for message in consumer:
         logger.info(f"Received message from Kafka: {message.value}")
-        grpc_send_message(message.value["message"])
+        grpc_send_message(message.value)
 
 @app.on_event("startup")
 async def startup_event():
