@@ -5,7 +5,7 @@
 
 
 # Start the FastAPI app
-uvicorn api:app --host 0.0.0.0 --port 8001 &
+uvicorn main:app --host 0.0.0.0 --port 8002
 
 # Check if gRPC stubs exist, and if so, run the gRPC server
 #if [ -d "$GRPC_STUBS_PATH" ]; then

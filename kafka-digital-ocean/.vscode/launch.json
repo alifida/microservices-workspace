@@ -1,0 +1,20 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python Debugger: FastAPI",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/venv/bin/uvicorn",  // Path to uvicorn within the virtual environment
+            "args": [
+                "api:app",
+                "--reload"
+            ],
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/venv/lib/python3.12/site-packages" // Path to site-packages in venv (adjust version if necessary)
+            },
+            "console": "integratedTerminal", // Use integrated terminal to activate venv
+            "python": "${workspaceFolder}/venv/bin/python"  // Use the Python executable from the venv
+        }
+    ]
+}

@@ -1,11 +1,11 @@
 #!/bin/bash
 
 # Path to check for generated gRPC stubs
-GRPC_STUBS_PATH="grpc------"
+#GRPC_STUBS_PATH="grpc------"
 
 
 # Start the FastAPI app
-uvicorn api:app --host 0.0.0.0 --port 8002 &
+uvicorn main:app --host 0.0.0.0 --port 8003
 
 # Check if gRPC stubs exist, and if so, run the gRPC server
 #if [ -d "$GRPC_STUBS_PATH" ]; then

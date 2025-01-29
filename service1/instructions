@@ -1,0 +1,27 @@
+1- install kubnernates
+
+2- Configure Docker to Use Minikube's Docker Daemon using following command:
+
+        eval $(minikube -p minikube docker-env)
+
+3- build docker-img by executing build-docker-img.sh file
+
+4- Create a Kubernetes Deployment for FastAPI App:
+    -   Create a service1-deployment.yaml 
+        already created 
+
+5-  Create a Kubernetes Service to Expose App
+    -   Create service1-service.yaml
+        already created
+
+6-  Apply the Deployment and Service to Minikube
+    -   execute the file deploy-to-k8s.sh
+
+7-  Verify the Deployment
+    -   execute the file verify-deployment.sh
+
+
+Optional for inspecting and debugging the image 
+docker run -it service1-k8s:latest bash
+
+kubectl exec -it service1-deployment-844566f47c-j8f6t -- /bin/bash
